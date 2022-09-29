@@ -9,5 +9,11 @@
     "clean": "rm -rf public",
     "deploy": "cp -a client/build/. public/",
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
+  },
+  "dependencies": {
+    "@semantic-ui-react/css-patch": "^1.1.2",
+    "react-big-calendar": "^1.5.0",
+    "react-calendar": "^3.9.0",
+    "react-numeric-input": "^2.2.3"
   }
 }
