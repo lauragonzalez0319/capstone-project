@@ -1,0 +1,2 @@
+class EducationalInsightFavoritesController < ApplicationController
+end

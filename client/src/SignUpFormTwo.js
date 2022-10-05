@@ -45,6 +45,7 @@ function SignUpFormTwo({ onSignUpTwo }) {
       <Grid.Row style={{position: "absolute", left: "350px"}}>
       <Grid.Column textAlign='center' width={10}>
       <Form onSubmit={handleSubmit} style={{width: "50%", display: "inline-block"}}>
+      <Header as='h2' textAlign='center' block style={{backgroundColor: "#90b4ce"}}> Sign Up 2/3</Header>
       <Label id="labels" size="huge" pointing="below">Do you currently menstruate?</Label>
         <Dropdown 
           style={{ fontSize: "18px" }}
@@ -84,7 +85,7 @@ function SignUpFormTwo({ onSignUpTwo }) {
               fluid selection
               options={yesOrNoOptions} 
               value={periodNotificationOn}
-              onChange={(event) => setPeriodNoticationOn(event.target.value)}
+              onChange={(event, data) => setPeriodNoticationOn(data.value)}
             />
           </div>
         ) : (<></>)}

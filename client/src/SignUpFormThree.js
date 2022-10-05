@@ -33,12 +33,14 @@ function SignUpFormThree({ onSignUpThree }) {
   return (
     <div>
       <div className="signup-image-container">
-        <img src="/signup.png" alt="user creating profile" className="signup-image"/>
+        <img src="/signupthree.png" alt="user creating profile" className="signup-image"/>
       </div>
+      <Header as='h2' textAlign='center' block style={{backgroundColor: "#90b4ce"}}> Sign Up 3/3</Header>
       <Grid>
       <Grid.Row style={{position: "absolute", left: "350px"}}>
       <Grid.Column textAlign='center' width={10}>
       <Form onSubmit={handleSubmit} style={{width: "50%", display: "inline-block"}}>
+      <br></br>
       <Header size="large" textAlign='center'>Select the date of your last yearly routine gynecologist visit on the calendar below:</Header>
           <div id="signup-calendar-container">
             <Calendar 
@@ -47,6 +49,7 @@ function SignUpFormThree({ onSignUpThree }) {
             />
           </div>
           <br></br>
+          <br></br>
           <Label id="labels" size="huge" pointing="below">Would you like a reminder to perform your monthly self-breast exam? 
           You'll get it five days after your period ends and you can change this later.</Label>
           <Dropdown 
@@ -54,8 +57,10 @@ function SignUpFormThree({ onSignUpThree }) {
             fluid selection
             options={yesOrNoOptions} 
             value={selfBreastExamNotificationOn}
-            onChange={(event) => setSelfBreastExamNoticationOn(event.target.value)}
+            onChange={(event, data) => setSelfBreastExamNoticationOn(data.value)}
           />
+          <br></br>
+          <br></br>
           <Label id="labels" size="huge" pointing="below">Would you like a reminder when you are due for a yearly routine check up with your gynecologist? 
           You can change this later.</Label>
           <Dropdown 
@@ -63,9 +68,11 @@ function SignUpFormThree({ onSignUpThree }) {
             fluid selection
             options={yesOrNoOptions} 
             value={routineCheckUpNotificationOn}
-            onChange={(event) => setRoutineCheckUpNoticationOn(event.target.value)}
+            onChange={(event, data) => setRoutineCheckUpNoticationOn(data.value)}
           />
-      <Button style={{backgroundColor: "#8bd3dd", color: "black"}} size="huge" type='submit'>Sign Up</Button>
+        <br></br>
+        <br></br>
+        <Button style={{backgroundColor: "#8bd3dd", color: "black"}} size="huge" type='submit'>Sign Up</Button>
       </Form>
       </Grid.Column>
       </Grid.Row>

@@ -59,38 +59,38 @@ function SignUpFormOne({ onSignUpOne }) {
 
   function handleSubmit(e) {
     e.preventDefault()
-        const postReqObj = {
-            email,
-            password, 
-            first_name: firstName,
-            last_name: lastName,
-            identify_as: identifyAs,
-            age,
-            weight,
-            height,
-            birth_control_method: birthControlMethod,
-            mammogram_notification_on: mammogramNotificationOn,
-            title: "Mammogram",
-            all_day: true,
-            start: lastMammogramDate,
-            end: lastMammogramDate,
-        }
+    const postReqObj = {
+        email,
+        password, 
+        first_name: firstName,
+        last_name: lastName,
+        identify_as: identifyAs,
+        age,
+        weight,
+        height,
+        birth_control_method: birthControlMethod,
+        mammogram_notification_on: mammogramNotificationOn,
+        title: "Mammogram",
+        all_day: true,
+        start: lastMammogramDate,
+        end: lastMammogramDate,
+    }
        
-        fetch(`/users`, {
-          method:'POST',
-          headers:{'Content-Type': 'application/json'},
-          body:JSON.stringify(postReqObj)
-        })
-        .then(res => {
-            if(res.ok){
-                res.json().then(user => {
-                  onSignUpOne(user)
-                  navigate(`/signuptwo`)
-                })
-            } else {
-                // res.json().then(json => setErrors(Object.entries(json.errors)))
-            }
-        })
+    fetch(`/users`, {
+      method:'POST',
+      headers:{'Content-Type': 'application/json'},
+      body:JSON.stringify(postReqObj)
+    })
+    .then(res => {
+        if(res.ok){
+            res.json().then(user => {
+              onSignUpOne(user)
+              navigate(`/signuptwo`)
+            })
+        } else {
+            // res.json().then(json => setErrors(Object.entries(json.errors)))
+        }
+    })
   }
   
   // useEffect(() => {
@@ -106,6 +106,7 @@ function SignUpFormOne({ onSignUpOne }) {
       <Grid>
       <Grid.Row style={{position: "absolute", left: "350px"}}>
       <Grid.Column textAlign='center' width={10}>
+      <Header as='h2' textAlign='center' block style={{backgroundColor: "#90b4ce"}}> Sign Up 1/3</Header>
       <Form onSubmit={handleSubmit} style={{width: "50%", display: "inline-block"}}>
         <Form.Field className="form-text">
         <Label id="labels" size="huge" pointing="below" htmlFor="email">Email:</Label>
@@ -178,7 +179,7 @@ function SignUpFormOne({ onSignUpOne }) {
               fluid selection
               options={yesOrNoOptions} 
               value={mammogramNotificationOn}
-              onChange={(event) => setMammogramNoticationOn(event.target.value)}
+              onChange={(event, data) => setMammogramNoticationOn(data.value)}
             />
           </div>
         ) : (<></>)
@@ -223,87 +224,7 @@ function SignUpFormOne({ onSignUpOne }) {
           onChange={(event,data) => setBirthControlMethod(data.value)}
         />
         <br></br>
-        {/* <Label id="labels" size="huge" pointing="below">Do you currently menstruate?</Label>
-        <Dropdown 
-          style={{ fontSize: "18px" }}
-          fluid selection
-          options={yesOrNoOptions} 
-          value={menstruating}
-          onChange={(event,data) => {
-          setMenstruating(data.value);
-          data.value === true ? setLastCycleInputVisible(true) : setLastCycleInputVisible(false);
-          }}
-        /> */}
-        {/* <br></br>
-        { lastCyleInputVisible === true ? ( 
-          <div>
-            <Header size="large" textAlign='center'>Select your last period date range on the calendar below:</Header>
-            <div id="signup-calendar-container">
-              <Calendar 
-                allowPartialRange={false}
-                selectRange={true}
-                onChange={setLastCycleInputDate}
-                value={lastCycleInputDate} 
-                />
-            </div>
-            <br></br>
-            <Form.Field className="form-text">
-              <Label id="labels" size="huge" pointing="below" htmlFor="email">How long is your average cycle?</Label>
-              <NumericInput
-                min={0} 
-                max={100}
-                onChange={(valueAsNumber) => setAverageCycleLength(valueAsNumber)}
-              />
-            </Form.Field>
-            <Label id="labels" size="huge" pointing="below">Would you like a reminder before your next period? 
-            You'll get it two days before your period starts and you can change this later.</Label>
-            <Dropdown 
-              style={{ fontSize: "18px" }}
-              fluid selection
-              options={yesOrNoOptions} 
-              value={periodNotificationOn}
-              onChange={(event) => setPeriodNoticationOn(event.target.value)}
-            />
-          </div>
-        ) : (<></>)} */}
-        <br></br>
-          {/* <Label id="labels" size="huge" pointing="below">Would you like a reminder to perform your monthly self-breast exam? 
-          You'll get it five days after your period ends and you can change this later.</Label>
-          <Dropdown 
-            style={{ fontSize: "18px" }}
-            fluid selection
-            options={yesOrNoOptions} 
-            value={selfBreastExamNotificationOn}
-            onChange={(event) => setSelfBreastExamNoticationOn(event.target.value)}
-          /> */}
-          {/* <Header size="large" textAlign='center'>Select the date of your last yearly routine gynecologist visit on the calendar below:</Header>
-          <div id="signup-calendar-container">
-            <Calendar 
-              value={lastRoutineCheckUpInputDate}
-              onChange={setLastRoutineCheckUpInputDate} 
-            />
-          </div>
-          <br></br> */}
-          {/* <Label id="labels" size="huge" pointing="below">Would you like a reminder when you are due for a yearly routine check up with your gynecologist? 
-          You can change this later.</Label>
-          <Dropdown 
-            style={{ fontSize: "18px" }}
-            fluid selection
-            options={yesOrNoOptions} 
-            value={routineCheckUpNotificationOn}
-            onChange={(event) => setRoutineCheckUpNoticationOn(event.target.value)}
-          /> */}
-        {/* <Form.Field> */}
-          {/* <Message
-            error
-            header='There was some errors with your submission'
-            list={errors}
-          /> */}
-        {/* </Form.Field> */}
-        <br></br>
-        {/* <Link to="/signuptwo"> */}
-          <Button style={{backgroundColor: "#8bd3dd", color: "black"}} size="huge" type='submit'>Next</Button>
-        {/* </Link> */}
+        <Button style={{backgroundColor: "#8bd3dd", color: "black"}} size="huge" type='submit'>Next</Button>
       </Form>
       </Grid.Column>
         </Grid.Row>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :educational_insight_favorites
+  resources :educational_insights, only: [:index]
   resources :events
   resources :users, only: [:show, :create]
 

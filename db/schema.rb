@@ -10,9 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_26_184103) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_05_034009) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "educational_insight_favorites", force: :cascade do |t|
+    t.bigint "educational_insight_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["educational_insight_id"], name: "index_educational_insight_favorites_on_educational_insight_id"
+    t.index ["user_id"], name: "index_educational_insight_favorites_on_user_id"
+  end
+
+  create_table "educational_insights", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.string "source"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -45,5 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_26_184103) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "educational_insight_favorites", "educational_insights"
+  add_foreign_key "educational_insight_favorites", "users"
   add_foreign_key "events", "users"
 end

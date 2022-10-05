@@ -1,9 +1,11 @@
 import { React, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { Menu, Icon, Button, Grid } from 'semantic-ui-react';
+import { Menu, Icon, Button, Grid, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import Dashboard from './Dashboard';
+import Notifications from './Notifications'
 
-function NavBar({ currentUser, signUpThreeComplete, onLogout }) {
+function NavBar({ currentUser, routineCheckupEvent, mammogramEvent, estimatedPeriodEvent, selfBreastExamEvent, onLogout }) {
   const [activeItem, setActiveItem] = useState("My Calendar");
 
   const navigate = useNavigate();
@@ -160,6 +162,11 @@ function NavBar({ currentUser, signUpThreeComplete, onLogout }) {
               </Button>
             </Menu.Item>
           </Menu>
+          <Segment textAlign="center" size="huge" id="nav-dash-divider">My FloMinders DashBoard</Segment>
+          <Dashboard currentUser={currentUser} routineCheckupEvent= {routineCheckupEvent} mammogramEvent={mammogramEvent} 
+            estimatedPeriodEvent={estimatedPeriodEvent} selfBreastExamEvent={selfBreastExamEvent}/>
+          <Notifications currentUser={currentUser} routineCheckupEvent= {routineCheckupEvent} mammogramEvent={mammogramEvent} 
+            estimatedPeriodEvent={estimatedPeriodEvent} selfBreastExamEvent={selfBreastExamEvent}/>
         </div>
       )}
     </div>

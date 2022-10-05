@@ -1,0 +1,2 @@
+class EducationalInsight < ApplicationRecord
+end
