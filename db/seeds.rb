@@ -106,7 +106,7 @@ If you have one or more of these signs and symptoms, please talk with your docto
 
 Better You Know Campaign
 
-Better You Know is a campaign to raise awareness of bleeding disorders for those individuals who may experience symptoms but have not yet been diagnosed. To learn more about bleeding disorders that affect women, go to the <a href="https://www.betteryouknow.org/i-want-to-know-for-women">Better You Know website,</a> which was developed by the National Hemophilia Foundation and the women’s portion was funded through a cooperative agreement with the Centers for Disease Control and Prevention. The Better You Know website has a bleeding disorder risk assessment, which will help to determine if you might have a bleeding disorder. If you decide to seek care, this website also provides tools, information, and resources that can simplify your next steps.
+Better You Know is a campaign to raise awareness of bleeding disorders for those individuals who may experience symptoms but have not yet been diagnosed. To learn more about bleeding disorders that affect women, go to the <a href=`https://www.betteryouknow.org/i-want-to-know-for-women`>Better You Know website,</a> which was developed by the National Hemophilia Foundation and the women’s portion was funded through a cooperative agreement with the Centers for Disease Control and Prevention. The Better You Know website has a bleeding disorder risk assessment, which will help to determine if you might have a bleeding disorder. If you decide to seek care, this website also provides tools, information, and resources that can simplify your next steps.
 ", source: "https://www.cdc.gov/ncbddd/blooddisorders/women/symptoms.html", image:"https://images.everydayhealth.com/images/cs-is-your-menstrual-flow-too-heavy-1440x810.jpg")
 ed4 = EducationalInsight.create(title: "What is a Mammogram?", content: "A mammogram is an X-ray picture of the breast. Doctors use a mammogram to look for early signs of breast cancer. Regular mammograms are the best tests doctors have to find breast cancer early, sometimes up to three years before it can be felt.
 How is a mammogram done?
@@ -124,6 +124,6 @@ Continue to get mammograms according to recommended time intervals. Mammograms w
 What happens if my mammogram is abnormal?
 An abnormal mammogram does not always mean that there is cancer. But you will need to have additional mammograms, tests, or exams before the doctor can tell for sure. You may also be referred to a breast specialist or a surgeon. It does not necessarily mean you have cancer or need surgery. These doctors are experts in diagnosing breast problems. Doctors will do follow-up tests to diagnose breast cancer or to find that there is no cancer.
 
-Are you worried about the cost? CDC offers free or low-cost mammograms. <a href="https://www.cdc.gov/cancer/nbccedp/screenings.htm">Find out if you qualify.</a>
+Are you worried about the cost? CDC offers free or low-cost mammograms. <a href=`https://www.cdc.gov/cancer/nbccedp/screenings.htm`>Find out if you qualify.</a>
 ", source: "https://www.cdc.gov/cancer/breast/basic_info/mammograms.htm", image: "https://thumbs.dreamstime.com/b/breast-cancer-awareness-poster-october-month-campaign-mammogram-information-healthcare-medicine-concept-vector-illustration-101551320.jpg")
 puts 'Done seeding educational insight!'

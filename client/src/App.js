@@ -105,10 +105,9 @@ function App() {
             event['end'] = new Date(dateEndString);
           })
           setMyEvents(events);
-          // setCount(0)
         })
     }
-  },[currentUser])
+  },[currentUser, setEventsToRender])
 
   function handleSignUpTwo(patchReqObj) {
     fetch(`/users/${currentUser.id}`, {
@@ -130,7 +129,6 @@ function App() {
     .then(res => res.json())
     .then((user) => updateUser(user))
     setSignUpThreeComplete(true);
-    // setCount(count + 1);
   }
   
   function handleArticleFavorite(educationalInsightId) {

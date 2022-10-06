@@ -12,9 +12,9 @@ function EducationalInsights({ currentUser, educationalInsights, handleArticleFa
 
   return (
     <div id="cards-container">
-    <Card.Group centered itemsPerRow={2}>
-            {articlePreviewsToDisplay}
-    </Card.Group>
+      <Card.Group centered itemsPerRow={1}>
+              {articlePreviewsToDisplay}
+      </Card.Group>
     </div>
   )
 }

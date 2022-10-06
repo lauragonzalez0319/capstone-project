@@ -65,9 +65,9 @@ function EducationalInsightCard({ currentUser, educationalInsight, handleArticle
             <Modal.Header style={{fontSize: "22px"}}>{educationalInsight.title}</Modal.Header>
             <Modal.Content scrolling>
               <Image centered size='massive' src={educationalInsight.image} wrapped />
-              <Modal.Description style={{fontSize: "18px"}}>
+              <Modal.Description style={{fontSize: "20px"}}>
               {contentParsed}
-              Source: {educationalInsight.source}
+              <a href={educationalInsight.source}>Source</a>
               <br/>
               </Modal.Description>
             </Modal.Content>

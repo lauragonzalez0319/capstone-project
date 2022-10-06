@@ -62,7 +62,7 @@ function MyCalendar({ setCount, currentUser, eventsToRender, setEventsToRender }
           color: "black"
         },
       }),
-      ...(event.title === "Mammogram" && {
+      ...(event.title.includes("Mammogram") && {
         style: {
           backgroundColor: '#9656a1',
           color: "black"
@@ -73,7 +73,6 @@ function MyCalendar({ setCount, currentUser, eventsToRender, setEventsToRender }
   )
 
   function handleSubmit(event) {
-    // event.preventDefault();
     setEventInputActive(false);
     if (eventInputType === "Period") {
       let postReqObj = {

@@ -17,19 +17,10 @@ function SignUpFormOne({ onSignUpOne }) {
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
   const [birthControlMethod, setBirthControlMethod] = useState("");
-  // const [menstruating, setMenstruating] = useState(null);
-
-  // const [averageCycleLength, setAverageCycleLength] = useState("");
-  // const [periodNotificationOn, setPeriodNoticationOn] = useState(true);
-  // const [selfBreastExamNotificationOn, setSelfBreastExamNoticationOn] = useState(true);
   const [mammogramNotificationOn, setMammogramNoticationOn] = useState(true);
-  // const [routineCheckUpNotificationOn, setRoutineCheckUpNoticationOn] = useState(true);
-
   const [fortyOrOverInputVisible, setFortyOrOverInputVisible] = useState(false);
   const [lastMammogramDate, setLastMammogramDate] = useState(new Date());
-  // const [lastCyleInputVisible, setLastCycleInputVisible] = useState(false);
-  // const [lastCycleInputDate, setLastCycleInputDate] = useState(new Date());
-  // const [lastRoutineCheckUpInputDate, setLastRoutineCheckUpInputDate] = useState(new Date());
+
 
   const [errors, setErrors] = useState([]);
 

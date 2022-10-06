@@ -12,9 +12,9 @@ function EducationalInsightFavorites({ currentUser, educationalInsightFavorites 
 
   return (
     <div id="cards-container">
-    <Card.Group centered itemsPerRow={2}>
-            {favoritePreviewsToDisplay}
-    </Card.Group>
+      <Card.Group centered itemsPerRow={1}>
+        {favoritePreviewsToDisplay}
+      </Card.Group>
     </div>
   )
 }

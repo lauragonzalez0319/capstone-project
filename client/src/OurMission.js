@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { Container, Header, Image, Button } from 'semantic-ui-react';
 
 function OurMission({ currentUser }) {
-  const [stylingId, setStylingId] = useState("");
+  const [stylingId, setStylingId] = useState("-null");
 
   useEffect(() => {
-    currentUser === null ? setStylingId("-null") : setStylingId("-loggedin")
+    currentUser == null ? setStylingId("-null") : setStylingId("-loggedin")
   }, [currentUser])
   
   return (

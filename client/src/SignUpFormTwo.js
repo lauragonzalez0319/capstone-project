@@ -72,6 +72,7 @@ function SignUpFormTwo({ onSignUpTwo }) {
             <br></br>
             <Form.Field className="form-text">
               <Label id="labels" size="huge" pointing="below" htmlFor="email">How long is your average cycle?</Label>
+              <br/>
               <NumericInput
                 min={0} 
                 max={100}

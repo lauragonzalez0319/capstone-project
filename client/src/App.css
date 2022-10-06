@@ -96,18 +96,14 @@ body {
 #nav-container {
   width: 30%;
   height: 48vh;
-  /* float: left; */
   position: absolute;
-  bottom: 40%;
-  /* flex: stretch; */
-  /* height: 100%;  */
-  /* position: fixed; */
+  top: 13%;
   background-color: rgb(159, 133, 125);
 }
 
 #nav-dash-divider{
   position: absolute;
-  top: 56%;
+  top: 60%;
   width: 30%;
   height: 100vh;
   background-color: rgb(233, 209, 146);
@@ -119,7 +115,7 @@ body {
   height: 100vh;
   position: absolute;
   /* float: bottom; */
-  top: 62.5%;
+  top: 67%;
   background-color: rgb(159, 133, 125);
 }
 
@@ -175,9 +171,9 @@ body {
 
 #cards-container {
   position: absolute;
-  left: 55%;
+  left: 62.5%;
   transform: translateX(-40%);
-  width: 100%;
+  width: 40%;
 }
 
 #ourmission-null-text-container {
