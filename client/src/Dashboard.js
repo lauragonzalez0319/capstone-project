@@ -2,6 +2,7 @@ import { React, useEffect, useState } from 'react';
 import { Card, Feed } from 'semantic-ui-react';
 
 function Dashboard({ currentUser, routineCheckupEvent, mammogramEvent, estimatedPeriodEvent, selfBreastExamEvent }) {
+
   const todaysDate = new Date();
 
   function daysUntil(date) {

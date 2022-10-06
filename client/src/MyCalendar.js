@@ -7,7 +7,6 @@ import { momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 
 function MyCalendar({ setCount, currentUser, eventsToRender, setEventsToRender }) {
-  // const [localizer, setLocalizer] = useState(null);
   const localizer = momentLocalizer(moment)
 
   const [eventInputType, setEventInputType] = useState("");
@@ -22,10 +21,10 @@ function MyCalendar({ setCount, currentUser, eventsToRender, setEventsToRender }
     {key: 'Routine Checkup', text: 'Routine Checkup', value: 'Routine Checkup'}
   ]
 
-  // const handleSelectEvent = useCallback(
-  //   (event) => window.alert(event.title),
-  //   []
-  // )
+  const handleSelectEvent = useCallback(
+    (event) => window.alert(event.title),
+    []
+  )
 
   // const handleSelectSlot = useCallback(
   //   ({ start, end }) => {
@@ -36,6 +35,42 @@ function MyCalendar({ setCount, currentUser, eventsToRender, setEventsToRender }
   //   },
   //   [setMyEvents]
   // )
+
+  const eventPropGetter = useCallback(
+    (event, start, end, isSelected) => ({
+      ...(event.title === "Period" && {
+        style: {
+          backgroundColor: '#e45858',
+          color: "black"
+        },
+      }),
+      ...(event.title === "Estimated Period" && {
+        style: {
+          backgroundColor: '#fec7d7',
+          color: "black"
+        },
+      }),
+      ...(event.title === "Self Breast Exam Due" && {
+        style: {
+          backgroundColor: '#8bd3dd',
+          color: "black"
+        },
+      }),
+      ...(event.title.includes("Routine Checkup") && {
+        style: {
+          backgroundColor: '#abd1c6',
+          color: "black"
+        },
+      }),
+      ...(event.title === "Mammogram" && {
+        style: {
+          backgroundColor: '#9656a1',
+          color: "black"
+        },
+      }),
+    }),
+    []
+  )
 
   function handleSubmit(event) {
     // event.preventDefault();
@@ -103,17 +138,19 @@ function MyCalendar({ setCount, currentUser, eventsToRender, setEventsToRender }
             events={eventsToRender}
             startAccessor="start"
             endAccessor="end"
-            // popup={true}
-            // onSelectEvent={handleSelectEvent}
+            eventPropGetter={eventPropGetter}
+            popup={true}
+            onSelectEvent={handleSelectEvent}
             // onSelectSlot={handleSelectSlot}
           />
         </div>
-        <br></br>
         <div id="calendar-page-form-container">
         <Grid>
           <Grid.Row>
           <Grid.Column textAlign="center" width={16}>
+            <br></br>
             <Header as='h2' textAlign='center' block style={{backgroundColor: "#90b4ce", width: "100%"}}>Record Your Events in Your Calender For a FloMinder</Header>
+            <br></br>
             <Form onSubmit={handleSubmit} style={{width: "50%", display: "inline-block"}}>
               <Form.Field className="form-text">
               <Label id="labels" size="huge" pointing="below">Event type:</Label>

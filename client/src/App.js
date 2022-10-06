@@ -4,7 +4,7 @@ import NavBar from './NavBar';
 import AboutUs from './AboutUs';
 import OurMission from './OurMission';
 import MyCalendar from './MyCalendar';
-import EducationalInsight from './EducationalInsight'
+import EducationalInsights from './EducationalInsights'
 import EducationalInsightFavorites from './EducationalInsightFavorites'
 import EditProfile from './EditProfile';
 import LoginForm from './LoginForm';
@@ -14,15 +14,15 @@ import SignUpFormThree from './SignUpFormThree';
 import './App.css';
 import OneSignal from 'react-onesignal';
 
-
-
 function App() {
   const [count, setCount] = useState(0);
   const [signUpThreeComplete, setSignUpThreeComplete] = useState(false);
 
   const [currentUser, setCurrentUser] = useState(null);
   const [myEvents, setMyEvents] = useState(null);
-  const [educationalInsights, setEducationalInsights] = useState([]);
+  const [educationalInsights, setEducationalInsights] = useState(null);
+  const [educationalInsightFavorites, setEducationalInsightFavorites] = useState(null);
+  const [refetchFavorites, setRefetchFavorites] = useState(false);
 
   const updateUser = (user) => setCurrentUser(user)
 
@@ -60,13 +60,26 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetch("/educational_insights")
-    .then((r) => r.json())
-    .then((educationalInsights) => {
-      console.log(educationalInsights)
-      setEducationalInsights(educationalInsights);
-    })
-  }, []);
+    if (currentUser !== null) {
+      fetch("/educational_insights")
+      .then((r) => r.json())
+      .then((educationalInsightsData) => {
+        console.log(educationalInsightsData)
+        setEducationalInsights(educationalInsightsData);
+      })
+    }
+  }, [currentUser]);
+
+  useEffect(() => {
+    if (currentUser !== null) {
+      fetch(`/educational_insight_favorites`)
+      .then((r) => r.json())
+      .then((favorites) => {
+        console.log("favorites:", favorites)
+        setEducationalInsightFavorites(favorites);
+      })
+    }
+  }, [currentUser, refetchFavorites]);
 
   function handleEditProfile(patchReqObj) {
     fetch(`/users/${currentUser.id}`, {
@@ -79,7 +92,7 @@ function App() {
   }
 
   useEffect(() => {
-    if (currentUser !== null ) {
+    if (currentUser !== null) {
     fetch(`/users/${currentUser.id}/events`)
     .then(res => res.json())
         .then((events) => {
@@ -91,11 +104,11 @@ function App() {
             let dateEndString = event['end'];
             event['end'] = new Date(dateEndString);
           })
-          console.log(events);
           setMyEvents(events);
+          // setCount(0)
         })
     }
-  },[currentUser, setEventsToRender])
+  },[currentUser])
 
   function handleSignUpTwo(patchReqObj) {
     fetch(`/users/${currentUser.id}`, {
@@ -105,7 +118,7 @@ function App() {
     })
     .then(res => res.json())
     .then((user) => updateUser(user))
-    setCount(count + 1);
+    // setCount(count + 1);
   }
 
   function handleSignUpThree(patchReqObj) {
@@ -117,7 +130,33 @@ function App() {
     .then(res => res.json())
     .then((user) => updateUser(user))
     setSignUpThreeComplete(true);
-    setCount(count + 1);
+    // setCount(count + 1);
+  }
+  
+  function handleArticleFavorite(educationalInsightId) {
+    fetch(`/educational_insight_favorites`, {
+      method:'POST',
+      headers:{'Content-Type': 'application/json'},
+      body:JSON.stringify({
+        educational_insight_id: educationalInsightId,
+        user_id: currentUser.id
+      })
+    })
+    .then(res => res.json())
+    .then((res) => {
+      setRefetchFavorites((refetchFavorites) => (!refetchFavorites));
+    })
+  }
+
+  function handleArticleUnFavorite(educationalInsightId) {
+    let articleToDelete = educationalInsightFavorites.filter((article) => {
+      return article["educational_insight_id"] === educationalInsightId
+    })
+    fetch(`/educational_insight_favorites/${articleToDelete[0]["id"]}`, 
+    { method: "DELETE" })
+    .then((res) => {
+      setRefetchFavorites((refetchFavorites) => (!refetchFavorites));
+    });
   }
 
   Date.prototype.addDays = function(days) {
@@ -127,7 +166,7 @@ function App() {
   }
 
   useEffect(() => {
-    if (myEvents !== null && eventsToRender === null) {
+    if (myEvents !== null) {
       myEvents.filter((event) => {
         if (event['title'] === "Period") {
           setPeriods([...periods, event])
@@ -145,9 +184,8 @@ function App() {
           setMammograms([...mammograms, event])
         }
       })
-      // setEventsToRender(...eventsToRender, estimatedPeriodEvent, mammogramEvent, selfBreastExamEvent, routineCheckupEvent);
     }
-  }, [myEvents, eventsToRender])  
+  }, [myEvents])  
 
   useEffect(() => {
     if (routineCheckups != []) {
@@ -168,28 +206,28 @@ function App() {
   }, [mammograms])
 
   useEffect(() => {
-    if (lastPeriod !== null) {
+    if (lastPeriod != null) {
       setLastPeriodStart(new Date(lastPeriod["start"]));
       setLastPeriodEnd(new Date(lastPeriod["end"]));
     }
-  }, [setLastPeriod])
+  }, [lastPeriod])
 
   useEffect(() => {
-    if (lastMammogram !== null) {
+    if (lastMammogram != null) {
       setLastMammogramStart(new Date(lastMammogram["start"]));
       setLastMammogramEnd(new Date(lastMammogram["end"]));
     }
-  }, [setLastMammogram])
+  }, [lastMammogram])
 
   useEffect(() => {
-    if (lastRoutineCheckup !== null) {
+    if (lastRoutineCheckup != null) {
       setLastRoutineCheckupStart(new Date(lastRoutineCheckup["start"]));
       setLastRoutineCheckupEnd(new Date(lastRoutineCheckup["end"]));
     }
-  }, [setLastRoutineCheckup])
+  }, [lastRoutineCheckup])
 
   useEffect(() => {
-    if (myEvents != null && lastPeriodStart !== null) {
+    if (myEvents != null && lastPeriodEnd != new Date()) {
       setEstimatedPeriodEvent({
           "id": 3,
           "title": "Estimated Period",
@@ -205,10 +243,10 @@ function App() {
           "allDay": true
         })
     }
-  }, [setLastPeriodStart, myEvents])
+  }, [lastPeriodEnd, myEvents])
 
   useEffect(() => {
-    if (myEvents != null && lastMammogramStart !== null && currentUser.age >= 40) {
+    if (myEvents != null && lastMammogramEnd != new Date() && currentUser.age >= 40) {
      setMammogramEvent({
         "id": 5,
         "title": "Mammogram Due",
@@ -217,10 +255,10 @@ function App() {
         "allDay": true
       })
     }
-  }, [setLastMammogramStart, myEvents])
+  }, [lastMammogramEnd, myEvents])
 
   useEffect(() => {
-    if (myEvents != null && lastRoutineCheckupStart !== null) {
+    if (myEvents != null && lastRoutineCheckupEnd != new Date()) {
       setRoutineCheckupEvent({
         "id": 6,
         "title": "Routine Checkup Due",
@@ -230,7 +268,7 @@ function App() {
       })
       setCount(1);
     }
-  }, [setLastRoutineCheckupStart, myEvents])
+  }, [lastRoutineCheckupEnd, myEvents])
 
   useEffect(() => {
     if (count === 1) {
@@ -246,12 +284,13 @@ function App() {
   }, [count])
 
   useEffect(() => {
-    console.log(eventsToRender)
-  }, [eventsToRender])
-
-  useEffect(() => {
     console.log(currentUser)
   }, [currentUser])
+
+  useEffect(() => {
+    console.log(educationalInsights)
+  }, [educationalInsights])
+
 
   return (
     <div id="background" style={{overflow: "scroll", height: "100vh"}}>
@@ -261,21 +300,19 @@ function App() {
       <NavBar currentUser={currentUser} routineCheckupEvent= {routineCheckupEvent} mammogramEvent={mammogramEvent} 
         estimatedPeriodEvent={estimatedPeriodEvent} selfBreastExamEvent={selfBreastExamEvent} onLogout={updateUser}/>
         <Routes>
-          {/* { user === null && signUpThreeComplete === false ? (
-            <Route path="/" element={<OurMission />}/>
-          ) : (
-            <Route path="/" element={<MyCalendar myEvents={myEvents} />}/> )
-          } */}
           <Route path="/editprofile" element={<EditProfile onEditProfile={handleEditProfile} />}/>
           <Route path="/users/new" element={<SignUpFormOne onSignUpOne={updateUser} />}/>
           <Route path="/signuptwo" element={<SignUpFormTwo onSignUpTwo={handleSignUpTwo} />}/>
           <Route path="/signupthree" element={<SignUpFormThree onSignUpThree={handleSignUpThree} />}/>
           <Route path="/login" element={<LoginForm onLogin={updateUser} />}/>
-          <Route path="/mycalendar" element={<MyCalendar currentUser={currentUser} eventsToRender={eventsToRender} setEventsToRender={setEventsToRender} />}/>
-          <Route path="/educationalinsight" element={<EducationalInsight educationalInsights={educationalInsights}/>}/>
-          <Route path="/educationalinsightfavorites" element={<EducationalInsightFavorites/>}/>
-          <Route path="/aboutus" element={<AboutUs />}/>
-          <Route path="/" element={<OurMission />}/>
+          <Route path="/mycalendar" element={<MyCalendar setCount={setCount} currentUser={currentUser} 
+            eventsToRender={eventsToRender} setEventsToRender={setEventsToRender} />}/>
+          <Route path="/educationalinsight" element={<EducationalInsights currentUser={currentUser} handleArticleFavorite={handleArticleFavorite} 
+            handleArticleUnFavorite={handleArticleUnFavorite} educationalInsights={educationalInsights}/>}/>
+          <Route path="/educationalinsightfavorites" element={<EducationalInsightFavorites educationalInsightFavorites={educationalInsightFavorites}
+            currentUser={currentUser} />}/>
+          <Route path="/aboutus" element={<AboutUs currentUser={currentUser}/>}/>
+          <Route path="/" element={<OurMission currentUser={currentUser}/>}/>
         </Routes>
   </div>
   );

@@ -66,23 +66,64 @@ ed2 = EducationalInsight.create(title: "How to Perform a Self-Breast Exam", cont
 While mammograms can help you to detect cancer before you can feel a lump, breast self-exams help you to be familiar with how your breasts look and feel so you can alert your healthcare professional if there are any changes.
 
 How Should A Breast Self-Exam Be Performed?
-1) In the Shower 
+
+1) In the Shower
 With the pads/flats of your 3 middle fingers, check the entire breast and armpit area pressing down with light, medium, and firm pressure. Check both breasts each month feeling for any lump, thickening, hardened knot, or any other breast changes.
 
 2) In Front of a Mirror
-Visually inspect your breasts with your arms at your sides. Next, raise your arms high overhead.
-
+Visually inspect your breasts with your arms at your sides. Next, raise your arms high overhead. 
 Look for any changes in the contour, any swelling, or dimpling of the skin, or changes in the nipples. Next, rest your palms on your hips and press firmly to flex your chest muscles. Left and right breasts will not exactly match—few women’s breasts do, so look for any dimpling, puckering, or changes, particularly on one side.
 
 3) Lying Down
 When lying down, the breast tissue spreads out evenly along the chest wall. Place a pillow under your right shoulder and your right arm behind your head. Using your left hand, move the pads of your fingers around your right breast gently covering the entire breast area and armpit.
-
 Use light, medium, and firm pressure. Squeeze the nipple; check for discharge and lumps. Repeat these steps for your left breast.
 
 Can I Rely On Breast Self-Exams Alone To Be Sure I Am Breast Cancer Free?
 
 Mammography can detect tumors before they can be felt, so screening is key for early detection. But when combined with regular medical care and appropriate guideline-recommended mammography, breast self-exams can help women know what is normal for them so they can report any changes to their healthcare provider.
-
 If you find a lump, schedule an appointment with your doctor, but don’t panic — 8 out of 10 lumps are not cancerous. For additional peace of mind, call your doctor whenever you have concerns.
 ", source: "https://www.nationalbreastcancer.org/breast-self-exam", image: "https://www.nationalbreastcancer.org/wp-content/uploads/breast-self-exam-once-a-month.jpg")
+ed3= EducationalInsight.create(title: "Signs and Symptoms of Bleeding Disorders in Women", content: "Signs and symptoms of a bleeding disorder:
+Heavy bleeding during menstruation (period) that can include:
+<ul>
+<li>Bleeding that lasts longer than 7 days from the time bleeding starts until the time it ends;</li>
+<li>Flooding or gushing of blood that limits daily activities, such as work, school, exercise, or social activities;</li>
+<li>Passing clots that are bigger than a grape; and</li>
+<li>Soaking a tampon or pad every hour or more often on the heaviest day(s).</li>
+<li>A diagnosis of “low in iron” or having received treatment for anemia.</li>
+</ul>
+Symptoms of easy or frequent bleeding that can include
+<ul>
+<li>Nosebleeds that occur for no apparent reason and last longer than 10 minutes or that need medical attention</li>
+<li>Easy bruising that occurs with no physical injury;</li>
+<li>Excessive bleeding after a medical procedure or dental extraction; and</li>
+<li>A history of muscle or joint bleeding with no physical injury.</li>
+<li>Having one or more of the bleeding symptoms above and a family member with a bleeding disorder, such as von Willebrand disease or hemophilia.</li>
+</ul>
+Bleeding disorders can be treated, but first you need to know if you have one!
+
+If you have one or more of these signs and symptoms, please talk with your doctor or other healthcare professional. You can also visit the Better You Know website to take the bleeding disorder risk assessment to determine if you might be at risk for a bleeding disorder. Bleeding disorders can be dangerous if not treated. Finding out if you are at risk can be the first step to feeling better.
+
+Better You Know Campaign
+
+Better You Know is a campaign to raise awareness of bleeding disorders for those individuals who may experience symptoms but have not yet been diagnosed. To learn more about bleeding disorders that affect women, go to the <a href="https://www.betteryouknow.org/i-want-to-know-for-women">Better You Know website,</a> which was developed by the National Hemophilia Foundation and the women’s portion was funded through a cooperative agreement with the Centers for Disease Control and Prevention. The Better You Know website has a bleeding disorder risk assessment, which will help to determine if you might have a bleeding disorder. If you decide to seek care, this website also provides tools, information, and resources that can simplify your next steps.
+", source: "https://www.cdc.gov/ncbddd/blooddisorders/women/symptoms.html", image:"https://images.everydayhealth.com/images/cs-is-your-menstrual-flow-too-heavy-1440x810.jpg")
+ed4 = EducationalInsight.create(title: "What is a Mammogram?", content: "A mammogram is an X-ray picture of the breast. Doctors use a mammogram to look for early signs of breast cancer. Regular mammograms are the best tests doctors have to find breast cancer early, sometimes up to three years before it can be felt.
+How is a mammogram done?
+You will stand in front of a special X-ray machine. A technologist will place your breast on a plastic plate. Another plate will firmly press your breast from above. The plates will flatten the breast, holding it still while the X-ray is being taken. You will feel some pressure. The steps are repeated to make a side view of the breast. The other breast will be X-rayed in the same way. You will then wait while the technologist checks the X-rays to make sure the pictures do not need to be redone. Keep in mind that the technologist cannot tell you the results of your mammogram. Each woman’s mammogram may look a little different because all breasts are a little different.
+
+What does having a mammogram feel like?
+Having a mammogram is uncomfortable for most women. Some women find it painful. A mammogram takes only a few moments, though, and the discomfort is over soon. What you feel depends on the skill of the technologist, the size of your breasts, and how much they need to be pressed. Your breasts may be more sensitive if you are about to get or have your period. A doctor with special training, called a radiologist, will look at the X-ray for early signs of breast cancer or other problems.
+
+When will I get the results of my mammogram?
+You will usually get the results within a few weeks, although it depends on the facility. A radiologist reads your mammogram and then reports the results to you and your doctor. If there is a concern, you will hear from the mammography facility earlier. Contact your health care provider or the mammography facility if you do not receive a report of your results within 30 days.
+
+What happens if my mammogram is normal?
+Continue to get mammograms according to recommended time intervals. Mammograms work best when they can be compared with previous ones. This allows the radiologist to compare them to look for changes in your breasts.
+
+What happens if my mammogram is abnormal?
+An abnormal mammogram does not always mean that there is cancer. But you will need to have additional mammograms, tests, or exams before the doctor can tell for sure. You may also be referred to a breast specialist or a surgeon. It does not necessarily mean you have cancer or need surgery. These doctors are experts in diagnosing breast problems. Doctors will do follow-up tests to diagnose breast cancer or to find that there is no cancer.
+
+Are you worried about the cost? CDC offers free or low-cost mammograms. <a href="https://www.cdc.gov/cancer/nbccedp/screenings.htm">Find out if you qualify.</a>
+", source: "https://www.cdc.gov/cancer/breast/basic_info/mammograms.htm", image: "https://thumbs.dreamstime.com/b/breast-cancer-awareness-poster-october-month-campaign-mammogram-information-healthcare-medicine-concept-vector-illustration-101551320.jpg")
 puts 'Done seeding educational insight!'

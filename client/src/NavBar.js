@@ -1,6 +1,6 @@
-import { React, useState, useEffect } from 'react'
+import { React, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { Menu, Icon, Button, Grid, Segment } from 'semantic-ui-react';
+import { Menu, Icon, Button, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import Dashboard from './Dashboard';
 import Notifications from './Notifications'
@@ -26,7 +26,7 @@ function NavBar({ currentUser, routineCheckupEvent, mammogramEvent, estimatedPer
           <Menu id="landing-nav-container">
             <Menu.Menu position='right'>
             <Menu.Item>
-              <Link to="/ourmission">
+              <Link to="/">
                 <Button id="buttons" size="huge">Our Mission</Button>
               </Link>
             </Menu.Item>
@@ -99,7 +99,7 @@ function NavBar({ currentUser, routineCheckupEvent, mammogramEvent, estimatedPer
                   onClick={(event) => setActiveItem("Educational Insight Favorites")}
                   >
                   <Icon name="heart outline" size="large"/>
-                  Educational Insight Favorites
+                  Educational Insight Bookmarks
                 </Button>
             </Menu.Item>
             <Menu.Item
@@ -125,7 +125,7 @@ function NavBar({ currentUser, routineCheckupEvent, mammogramEvent, estimatedPer
               id="nav-item-container"
               name="Our Mission" 
               as={Link}
-              to="/ourmission" 
+              to="/" 
             >
               <Button 
                 id="buttons" 

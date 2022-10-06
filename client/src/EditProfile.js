@@ -188,24 +188,25 @@ function EditProfile({ onEditProfile }) {
         />
         <br></br>
         <Form.Field className="form-text">
-              <Label id="labels" size="huge" pointing="below" htmlFor="email">How long is your average cycle?</Label>
-              <NumericInput
-                min={0} 
-                max={100}
-                onChange={(valueAsNumber) => setAverageCycleLength(valueAsNumber)}
-              />
-            </Form.Field>
-            <Label id="labels" size="huge" pointing="below">Would you like a reminder before your next period? 
-            You'll get it two days before your period starts and you can change this later.</Label>
-            <Dropdown 
-              style={{ fontSize: "18px" }}
-              fluid selection
-              options={yesOrNoOptions} 
-              value={periodNotificationOn}
-              onChange={(event, data) => setPeriodNoticationOn(data.value)}
+          <Label id="labels" size="huge" pointing="below" htmlFor="email">How long is your average cycle?</Label>
+            <NumericInput
+              min={0} 
+              max={100}
+              onChange={(valueAsNumber) => setAverageCycleLength(valueAsNumber)}
             />
-            <Label id="labels" size="huge" pointing="below">Would you like a reminder to perform your monthly self-breast exam? 
-          You'll get it five days after your period ends and you can change this later.</Label>
+        </Form.Field>
+          <Label id="labels" size="huge" pointing="below">Would you like a reminder before your next period? 
+          You'll get it two days before your period starts and you can change this later.</Label>
+          <Dropdown 
+            style={{ fontSize: "18px" }}
+            fluid selection
+            options={yesOrNoOptions} 
+            value={periodNotificationOn}
+            onChange={(event, data) => setPeriodNoticationOn(data.value)}
+          />
+          <br/>
+          <Label id="labels" size="huge" pointing="below">Would you like a reminder to perform your monthly self-breast exam? 
+            You'll get it five days after your period ends and you can change this later.</Label>
           <Dropdown 
             style={{ fontSize: "18px" }}
             fluid selection
@@ -213,7 +214,6 @@ function EditProfile({ onEditProfile }) {
             value={selfBreastExamNotificationOn}
             onChange={(event, data) => setSelfBreastExamNoticationOn(data.value)}
           />
-          <br></br>
           <br></br>
           <Label id="labels" size="huge" pointing="below">Would you like a reminder when you are due for a yearly routine check up with your gynecologist? 
           You can change this later.</Label>
